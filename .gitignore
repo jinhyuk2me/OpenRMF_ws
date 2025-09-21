@@ -1,0 +1,60 @@
+# Build directories
+build/
+install/
+log/
+
+# ROS2 specific
+*.pyc
+*.pyo
+__pycache__/
+*.egg-info/
+.catkin_workspace
+devel/
+
+# IDE and editor files
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.DS_Store
+
+# OS generated files
+Thumbs.db
+.AppleDouble
+.LSOverride
+
+# Backup files
+*.bak
+*.backup
+*.orig
+
+# Temporary files
+*.tmp
+*.temp
+
+# Compiled Object files
+*.o
+*.obj
+
+# Executables
+*.exe
+*.out
+*.app
+
+# CMake
+CMakeCache.txt
+CMakeFiles/
+cmake_install.cmake
+
+# Python
+*.pyc
+*.pyo
+__pycache__/
+dist/
+*.egg-info/
+
+# Gazebo
+*.log
+gzserver*
+gzclient*
