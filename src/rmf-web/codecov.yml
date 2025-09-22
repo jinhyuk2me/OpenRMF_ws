@@ -1,0 +1,17 @@
+coverage:
+  status:
+    project: false
+    patch: false
+ignore:
+  - packages/rmf-dashboard-framework/examples
+  - "**/*.js"
+  - "**/*.stories.tsx"
+flags:
+  dashboard:
+    paths:
+      - packages/rmf-dashboard-framework
+    carryforward: true
+  api-server:
+    paths:
+      - packages/api-server
+    carryforward: true

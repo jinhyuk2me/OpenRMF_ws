@@ -1,0 +1,63 @@
+name: rmf-dashboard-framework
+on:
+  pull_request:
+    paths:
+      - '.github/workflows/rmf-dashboard-framework.yml'
+      - '.github/minimal-rmf/**'
+      - 'packages/rmf-dashboard-framework/**'
+      - 'packages/rmf-models/**'
+      - 'packages/api-client/**'
+  push:
+    branches:
+      - main
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+env:
+  CI: true
+jobs:
+  unit-tests:
+    name: Unit Tests
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        ros_distribution: [jazzy, rolling]
+    container:
+      image: ghcr.io/${{ github.repository }}/minimal-rmf:${{ matrix.ros_distribution }}-nightly
+      credentials:
+        username: ${{ github.repository_owner }}
+        password: ${{ secrets.GITHUB_TOKEN }}
+    defaults:
+      run:
+        shell: bash
+        working-directory: packages/rmf-dashboard-framework
+    steps:
+      - name: Checkout main for rolling
+        if: matrix.ros_distribution == 'rolling'
+        uses: actions/checkout@v4
+        with:
+          ref: main
+      - name: Checkout ros_distribution branch
+        if: matrix.ros_distribution != 'rolling'
+        uses: actions/checkout@v4
+        with:
+          ref: ${{ matrix.ros_distribution }}
+      - name: bootstrap
+        uses: ./.github/actions/bootstrap
+        with:
+          package: rmf-dashboard-framework
+          skip-build: true
+      - name: lint
+        run: pnpm lint
+      - name: unit test
+        run: pnpm run test:coverage
+      - name: dependencies for codecov
+        run: apt update && apt install git -y
+      - name: Upload coverage to Codecov
+        uses: codecov/codecov-action@v5
+        with:
+          flags: rmf-dashboard-framework
+          fail_ci_if_error: true
+        env:
+          CODECOV_TOKEN: ${{ secrets.CODECOV_TOKEN }}

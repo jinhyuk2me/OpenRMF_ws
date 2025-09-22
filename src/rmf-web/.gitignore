@@ -1,0 +1,9 @@
+node_modules/
+coverage/
+dist/
+.pnpm-debug.log
+
+__pycache__/
+/.venv/
+
+*.tsbuildinfo

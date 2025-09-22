@@ -1,0 +1,10 @@
+/* This is a generated file, do not edit */
+
+import { {{ srv.request.name }} } from './{{ srv.request.name }}';
+import { {{ srv.response.name }} } from './{{ srv.response.name }}';
+
+export class {{ srv.name }} {
+  static readonly FullServiceName = '{{ srv.full_type_name }}';
+  static readonly Request = {{ srv.request.name }};
+  static readonly Response = {{ srv.response.name }};
+}

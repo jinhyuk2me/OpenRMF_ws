@@ -1,0 +1,23 @@
+{
+  "name": "rmf-models",
+  "version": "0.3.0",
+  "description": "RMF models generated from ROS messages",
+  "type": "module",
+  "main": "dist/index.js",
+  "scripts": {
+    "build": "tsc --build && cp package.json dist"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/open-rmf"
+  },
+  "author": "Teo Koon Peng <koonpeng@openrobotics.org>",
+  "license": "Apache-2.0",
+  "devDependencies": {
+    "ts-node": "^9.1.1",
+    "typescript": "~5.5.4"
+  },
+  "publishConfig": {
+    "directory": "dist"
+  }
+}
