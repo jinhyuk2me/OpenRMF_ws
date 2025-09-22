@@ -9,14 +9,14 @@
             value="$(find-pkg-share rmf_demos_maps)/pinklab/pinklab.building.yaml" />
     </include>
 
-    <!-- TinyRobot fleet adapter -->
+    <!-- Minibot fleet adapter -->
     <group>
         <include file="$(find-pkg-share rmf_demos_fleet_adapter)/launch/fleet_adapter.launch.xml">
             <arg name="use_sim_time" value="$(var use_sim_time)" />
             <arg name="nav_graph_file"
                 value="$(find-pkg-share rmf_demos_maps)/maps/pinklab/nav_graphs/0.yaml" />
             <arg name="config_file"
-                value="$(find-pkg-share rmf_demos)/config/pinklab/tinyRobot_config.yaml" />
+                value="$(find-pkg-share rmf_demos)/config/pinklab/minibot_config.yaml" />
         </include>
     </group>
 

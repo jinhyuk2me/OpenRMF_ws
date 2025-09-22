@@ -1,20 +1,56 @@
-<?xml version='1.0' ?>
+<?xml version='1.0'?>
 
 <launch>
-  <arg name="use_sim_time" default="true"/>
-  <arg name="failover_mode" default="false"/>
-  <arg name="gazebo_version" default='8'/>
+  <arg name="gazebo_version" default="8" />
+  <arg name="use_sim_time" default="true" />
+  <arg name="failover_mode" default="false" />
+  <arg name="robot_name" default="minibot_1"/>
+
+  <!-- Minibot robot_state_publisher -->
+  <include file="$(find-pkg-share minibot_description)/launch/upload_gazebo_robot.launch.xml">
+    <arg name="is_sim" value="true" />
+    <arg name="prefix" value="" />
+  </include>
+
+  <!-- Spawn robot in Gazebo -->
+  <node pkg="ros_gz_sim" exec="create" name='spawn_robot' output='screen'
+    args="-name $(var robot_name) -topic robot_description -x 30.3932 -y -3.9979 -z 0.0">
+    <param name='use_sim_time' value='True' />
+  </node>
 
   <!-- Common launch -->
   <include file="$(find-pkg-share rmf_demos)/pinklab.launch.xml">
-    <arg name="use_sim_time" value="$(var use_sim_time)"/>
-    <arg name="failover_mode" value="$(var failover_mode)"/>
+    <arg name="use_sim_time" value="$(var use_sim_time)" />
+    <arg name="failover_mode" value="$(var failover_mode)" />
   </include>
 
   <!-- Simulation launch -->
   <include file="$(find-pkg-share rmf_demos_gz)/simulation.launch.xml">
     <arg name="map_name" value="pinklab" />
-    <arg name="gazebo_version" value="$(var gazebo_version)" /> 
+    <arg name="gazebo_version" value="$(var gazebo_version)" />
   </include>
+
+  <!-- Minibot Gazebo-ROS bridge -->
+  <node pkg="ros_gz_bridge" exec="parameter_bridge" 
+    args="--ros-args -p config_file:=$(find-pkg-share minibot_gazebo)/params/minibot_bridge.yaml"
+    output="screen">
+    <param name="use_sim_time" value="$(var use_sim_time)" />
+  </node>
+
+  <!-- Load minibot controllers -->
+  <node pkg="controller_manager" exec="spawner" args="joint_state_broadcaster" output="screen">
+    <param name="use_sim_time" value="$(var use_sim_time)" />
+  </node>
+  
+  <node pkg="controller_manager" exec="spawner" args="base_controller" output="screen">
+    <param name="use_sim_time" value="$(var use_sim_time)" />
+  </node>
+
+  <!-- Controller configuration is handled by gz_ros2_control plugin in Gazebo -->
+
+  <!-- RMF Robot State Publisher for minibot -->
+  <node pkg="minibot_bringup" exec="rmf_robot_state_publisher.py" name="rmf_robot_state_publisher" output="screen">
+    <param name="use_sim_time" value="$(var use_sim_time)" />
+  </node>
 
 </launch>
