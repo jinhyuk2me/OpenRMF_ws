@@ -49,6 +49,11 @@
     <param name="use_sim_time" value="$(var use_sim_time)" />
   </node>
 
+  <!-- Remap base_controller/odom to odom for compatibility -->
+  <node pkg="topic_tools" exec="relay" args="/base_controller/odom /odom" output="screen">
+    <param name="use_sim_time" value="$(var use_sim_time)" />
+  </node>
+
   <!-- Controller configuration is handled by gz_ros2_control plugin in Gazebo -->
 
   <!-- RMF Robot State Publisher for minibot -->

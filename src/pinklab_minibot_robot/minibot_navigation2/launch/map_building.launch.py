@@ -12,13 +12,15 @@ def generate_launch_description():
 
     declare_use_sim_time_argument = DeclareLaunchArgument(
         'use_sim_time',
-        default_value='false',
+        default_value='true',
+        description='Use simulation (Gazebo) clock if true'
     )
 
     declare_slam_params_file_cmd = DeclareLaunchArgument(
         'slam_params_file',
         default_value=os.path.join(get_package_share_directory("minibot_navigation2"),
                                     'config', 'mapper_params.yaml'),
+        description='Full path to SLAM Toolbox configuration file'
     )
 
     slam_toolbox_node = Node(
