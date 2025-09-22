@@ -1,0 +1,84 @@
+building_name: pinklab
+doors:
+  door_1:
+    endpoints:
+    - [20.972883890807374, -8.162097546269361]
+    - [20.9631346830197, -10.170013521417372]
+    map: L1
+levels:
+  L1:
+    lanes:
+    - - 0
+      - 1
+      - {}
+    - - 1
+      - 0
+      - {}
+    - - 1
+      - 2
+      - {}
+    - - 2
+      - 1
+      - {}
+    - - 0
+      - 3
+      - {}
+    - - 3
+      - 0
+      - {}
+    - - 3
+      - 2
+      - {}
+    - - 2
+      - 3
+      - {}
+    - - 2
+      - 4
+      - {door_name: door_1}
+    - - 4
+      - 2
+      - {door_name: door_1}
+    - - 4
+      - 5
+      - {}
+    - - 5
+      - 4
+      - {}
+    - - 6
+      - 7
+      - {}
+    - - 7
+      - 6
+      - {}
+    vertices:
+    - - 4.617196752968896
+      - -4.7765974692671485
+      - {name: ''}
+    - - 18.666249383517567
+      - -4.7765974692671485
+      - {is_charger: true, is_holding_point: true, is_parking_spot: true, name: tinyRobot1_charger}
+    - - 18.666249383517567
+      - -9.117286115509815
+      - {name: ''}
+    - - 4.6172201323640705
+      - -9.117286115509815
+      - {name: ''}
+    - - 23.97096401037657
+      - -9.117286115509815
+      - {name: ''}
+    - - 23.97096401037657
+      - -4.7765974692671485
+      - {name: point_1}
+    - - 25.963753516846815
+      - -4.428501654517269
+      - {dropoff_ingestor: coke_ingestor, is_holding_point: true, name: point_2}
+    - - 30.404435836249885
+      - -4.014686359932481
+      - {is_charger: true, is_holding_point: true, is_parking_spot: true, name: minibot_charger_1}
+  L2:
+    lanes: []
+    vertices: []
+lifts:
+  lift_1:
+    dims: [2.0, 1.5]
+    position: [1.9629807776230415, -9.23579626964825, 0.0]

@@ -6,6 +6,9 @@
   <arg name="failover_mode" default="false" />
   <arg name="robot_name" default="minibot_1"/>
 
+  <!-- Set Gazebo plugin path for ros2_control -->
+  <set_env name="GZ_SIM_SYSTEM_PLUGIN_PATH" value="/opt/ros/jazzy/lib/rmf_robot_sim_gz_plugins/:/opt/ros/jazzy/lib/rmf_building_sim_gz_plugins/:/opt/ros/jazzy/lib" />
+
   <!-- Minibot robot_state_publisher -->
   <include file="$(find-pkg-share minibot_description)/launch/upload_gazebo_robot.launch.xml">
     <arg name="is_sim" value="true" />

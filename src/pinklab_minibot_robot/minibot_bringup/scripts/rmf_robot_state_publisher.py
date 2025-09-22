@@ -20,8 +20,8 @@ class RMFRobotStatePublisher(Node):
         
         # State variables
         self.seq = 0
-        self.current_x = 0.0
-        self.current_y = 0.0
+        self.current_x = 30.404435836249885
+        self.current_y = -4.014686359932481
         self.current_yaw = 0.0
         self.battery_percent = 100.0
         self.robot_mode = RobotMode.MODE_IDLE
