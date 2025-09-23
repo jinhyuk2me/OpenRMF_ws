@@ -1,3 +1,5 @@
+![banner](https://github.com/jinhyuk2me/OpenRMF_ws/blob/main/assets/thumbnail.png?raw=true)
+
 # OpenRMF 실습 레포지토리
 
 이 프로젝트는 Open-RMF를 이용한 로봇 관제 시스템입니다.
