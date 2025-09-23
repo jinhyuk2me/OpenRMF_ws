@@ -15,3 +15,5 @@
 - `rmf/`: RMF 코어 시스템
 - `rmf_demos/`: RMF 데모 및 예제
 - `rmf-web/`: 웹 대시보드 시스템
+
+![demo](https://github.com/jinhyuk2me/OpenRMF_ws/blob/main/assets/demo_door_open.gif?raw=true)
