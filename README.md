@@ -4,6 +4,8 @@
 
 이 프로젝트는 Open-RMF를 이용한 로봇 관제 시스템입니다.
 
+![rviz2](https://github.com/jinhyuk2me/Hello_OpenRMF/blob/main/assets/rmf_rviz.gif?raw=true)
+
 ## 실습 주제
 
 - **커스텀 맵 생성**: Traffic-editor를 활용한 커스텀 맵 제작
